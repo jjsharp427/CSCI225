@@ -1,49 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 
-   <head>
-        <title>
-            Contact Me! 
-        </title>
-        <meta charset="UTF-8">
-   </head>
-   <body>
-        <div class = "video">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/ZnW327PDAuU?si=OiT46sKnvakpMX2-&amp;start=468" allowfullscreen></iframe>
-        </div>
+<head>
+    <title>
+        Contact Me!
+    </title>
+    <meta charset="UTF-8">
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
 
-        <div class = "feedback">
-        <fieldset>
-            <h1>Feedback</h1>
-            <form action="">
-                <p>
-                <input type="text" name="fname" placeholder="anonymous" required>
-                <input type="text" name="lname" placeholder="anonymous" required>
-                </p>
-                <p>
-                <input type="email" name="mail" placeholder="name@domain.com">
-                </p>
-                <p>
-                    Would you recommend this website? <br>YES!<input type="radio" name="recommend" value="yes">
-                    NO!<input type="radio" name="recommend" value="no">
-                </p>
-                <p>
-                    What is your favorite website(s)? <br> Google<input type="checkbox" name = website value="Google">
-                    Facebook<input type="checkbox" name="website" value="Facebook"> X(Twitter)<input type="checkbox" name="website" value="twit" checked> YouTube<input type="checkbox" name="website" value="youtube">
-                </p>
-                <p>
-                    Rate my website on a scale from 0-10 <br>0<input type="range" name="rating">10
-                </p>
-                <p>
-                    Additional Comments: <br>
-                    <textarea name="comments" cols="30" rows="10">
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="navbar">
+                    <ul>
+                        <li id="usca"><a href="https://www.usca.edu/">USC Aiken Website</a></li>
+                        <li id="git"><a href="https://github.com/">Github</a></li>
+                        <li id="assign"><a href="#assignment">Assignment Section</a></li>
+                        <li id="contact"><a href="#contact">Contact Information Section</a></li>
+                        <li id="bboard"><a href="https://blackboard.sc.edu/ultra/course">Blackboard</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="video">
+                    <iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/ZnW327PDAuU?si=OiT46sKnvakpMX2-&amp;start=468"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col">
+                <div class="feedback">
+                    <fieldset>
+                        <h1>Feedback</h1>
+                        <form action="">
+                            <p>
+                                <input type="text" name="fname" placeholder="anonymous" required>
+                                <input type="text" name="lname" placeholder="anonymous" required>
+                            </p>
+                            <p>
+                                <input type="email" name="mail" placeholder="name@domain.com">
+                            </p>
+                            <p>
+                                Would you recommend this website? <br>YES!<input type="radio" name="recommend"
+                                    value="yes">
+                                NO!<input type="radio" name="recommend" value="no">
+                            </p>
+                            <p>
+                                What is your favorite website(s)? <br> Google<input type="checkbox" name=website
+                                    value="Google">
+                                Facebook<input type="checkbox" name="website" value="Facebook"> X(Twitter)<input
+                                    type="checkbox" name="website" value="twit" checked> YouTube<input type="checkbox"
+                                    name="website" value="youtube">
+                            </p>
+                            <p>
+                                Rate my website on a scale from 0-10 <br>0<input type="range" name="rating">10
+                            </p>
+                            <p>
+                                Additional Comments: <br>
+                                <textarea name="comments" cols="30" rows="10">
                     </textarea>
-                </p>
-                <p>
-                    <input type="submit" name="SUBMIT" formnovalidate>
-                </p>
-            </form>
-        </fieldset>
-
+                            </p>
+                            <p>
+                                <input type="submit" name="SUBMIT" formnovalidate>
+                            </p>
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
         </div>
-   </body>
+    </div>
+    <!-- bootstrap jasvascript file-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>

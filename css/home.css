@@ -1,0 +1,189 @@
+/* Style file JSharp */
+
+/* CSS VARIABLES */
+
+:root{
+    --page-color: hsla(120,45%,23%,0.9);
+    --body-color: hsla(0, 86%, 47%, 0.7);
+    --sidebar-color: hsla(100, 50%, 50%, 0.5);
+    --footbar-color: hsla(200, 90%, 50%, 0.5);
+    --page-position: 80%;
+    --page-width: 30%;
+}
+/* COLOR */
+
+body {
+    color: hsl(60, 9%, 89%);
+    background-image: url(../img/portal.png);
+    background-size: cover;
+}
+/* TOPOGRAPHY */
+p {
+    font-family: 'Alkatra', cursive;
+    font-size: 1.20em;
+    line-height: 30%;
+    text-align: center;
+}
+a:hover {
+    font-size: 1.5em;
+    text-transform: uppercase;  
+    font-style: italic;
+}
+div.navbar li{
+    display: inline-table;
+    padding-right: 100px;
+    border: 1px solid white;
+    border-bottom-right-radius: 40%;
+    border-top-left-radius: 40%;
+}
+div.portfolio li{
+    display: inline-table;
+    text-align: center;
+    padding-right: 140px;
+}
+li {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.25em;
+    font-weight: 100;
+    color: rgb(100,200,255);
+    text-decoration: none;
+}
+h1{
+    text-transform: uppercase;
+    letter-spacing: 1ch;
+    font-size: 2em;
+    color: rgb(0, 0, 0);   
+}
+h1:hover{
+    transform: translate(15%,0);
+    background-color: rgb(18, 148, 104);
+}
+div.schedule h1 ~table{
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+div.schedule h1:hover ~table{
+    opacity: 1;
+    transform: rotate(360deg);
+
+}
+a{
+    color: rgb(255, 255, 0);
+    text-decoration: none;
+}
+div.schedule td{
+    font-size: 1em;   
+}
+div.schedule h1{
+    margin-top: 5px;
+}
+div.schedule table{
+    border: 5px;
+    vertical-align: bottom;
+    empty-cells: show;
+}
+
+/* LAYOUT */
+
+div.navbar{
+    position: absolute;
+    padding: 2%;
+    left: 10%;
+    top: 0vh;
+    width: 100vw;
+    height: 1px;
+    margin: -3%;
+    z-index: 1;
+}
+div.introduction,div.portfolio,div.schedule,div.contact{
+    position: fixed;
+}
+div.portfolio, div.contact, div.schedule{
+    border-bottom-right-radius: 20%;
+}
+div.introduction {
+    top: 4vh;
+    left: 1px;
+    width: 79vw;
+    border: 1px solid rgb(249, 246, 246);
+    background-color: hsla(355, 78%, 44%, 0.6);
+}
+div.portfolio{
+    top: 27vh;
+    left: 1px;
+    width: 79vw;
+    line-height: 59%;
+    box-shadow: 5px 5px;
+    border: 1px solid white;
+    background-color: hsla(220, 1%, 41%, 0.8);
+}
+div.image {
+    position: fixed;
+    z-index: -1;
+    right: 10px;
+    top: 4vh;
+}
+div.image:hover{
+    transform: rotate(180deg);
+}
+div.contact {
+    right: 1%;
+    bottom: 0px;
+    border: 1px solid white;
+    width: 25vw;
+}
+div.schedule{
+    top: 51vh;
+    left: 1px;
+    bottom: 0px;
+    border: 1px solid white;
+    background-color: hsla(200, 90%, 50%, 0.5);
+    z-index: -1;
+}
+div.assignment{
+    position: absolute;
+    left: 30%;
+    top: 51vh;
+    width: 30vw;
+    height: 37%;
+    background-color: hsla(355, 78%, 44%, 0.6);
+    border: 1px solid white;
+} 
+div.footer{
+    position: fixed;
+    padding: 2%;
+    bottom: 0px;
+    background-color: var(--sidebar-color);
+    width: 40vw;
+    height: 2vh;
+    left: 30%;
+    border: 1px solid white;
+}
+p::first-letter{
+    font-style: italic;
+    color: grey;
+    font-size: 1.5em;
+}
+table tr:nth-child(2n){
+    background: black;
+}
+div.footer footer{
+    animation: 7s ease-in-out 2s alternate infinite moving;
+}
+@keyframes moving{
+    from{
+        transform: translate(-900px,0px);
+    }
+    30%{
+        transform: translate(-120px,0px);
+    }
+    45%{
+        transform: translate(0px,0px);       
+    }
+    60%{
+        transform: translate(110px,0px);
+    }
+    100%{
+        transform: translate(200px,0px);
+    }
+}
