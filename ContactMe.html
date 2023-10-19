@@ -17,11 +17,11 @@
             <div class="col">
                 <div class="navbar navbar-expand-lg navbar-dark bg-dark">
                     <ul class = "navbar-nav">
-                        <li class ="nav-item"><a class = "nav-link active text-green" href="https://www.usca.edu/">USC Aiken Website</a></li>
-                        <li class ="nav-item"><a class = "nav-link active text-red" href="https://github.com/">Github</a></li>
-                        <li class ="nav-item"><a class = "nav-link activetext-yellow" href="#assignment">Assignment Section</a></li>
-                        <li class ="nav-item"><a class = "nav-link active text-blue" href="#contact">Contact Information Section</a></li>
-                        <li class ="nav-item"><a class = "nav-link active text-orange" href="https://blackboard.sc.edu/ultra/course">Blackboard</a></li>
+                        <li class ="nav-item"><a class = "nav-link active" href="https://www.usca.edu/">USC Aiken Website</a></li>
+                        <li class ="nav-item"><a class = "nav-link active" href="https://github.com/">Github</a></li>
+                        <li class ="nav-item"><a class = "nav-link active" href="#assignment">Assignment Section</a></li>
+                        <li class ="nav-item"><a class = "nav-link active" href="#contact">Contact Information Section</a></li>
+                        <li class ="nav-item"><a class = "nav-link active" href="https://blackboard.sc.edu/ultra/course">Blackboard</a></li>
                     </ul>
                 </div>
             </div>
@@ -57,13 +57,17 @@
                                     value="yes">
                                 NO!<input type="radio" name="recommend" value="no">
                             </p> </div>
-                            <p>
-                                What is your favorite website(s)? <br> Google <input type="checkbox" name=website
-                                    value="Google">
-                                Facebook <input type="checkbox" name="website" value="Facebook"> X(Twitter) <input
-                                    type="checkbox" name="website" value="twit" checked> YouTube <input type="checkbox"
-                                    name="website" value="youtube">
-                            </p>
+                            <div class="form-check">
+                            <p> What is your favorite website(s)? </p> 
+                            <label class="form-check-label">Google</label> 
+                            <input type="checkbox" name="website" value="Google">
+                            <label class="form-check-label">Facebook</label>  
+                            <input type="checkbox" name="website" value="Facebook"> 
+                            <label class="form-check-label">X (Twitter)</label> 
+                            <input type="checkbox" name="website" value="twit" checked> 
+                            <label class="form-check-label">YouTube</label> 
+                            <input type="checkbox" name="website" value="youtube">
+                            </div>
                             <p>
                                 Rate my website on a scale from 0-10 <br>0<input type="range" class="form-range" min = "0" max="10" name="rating">10
                             </p>
