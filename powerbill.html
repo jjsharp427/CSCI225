@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        Power Bill 
+    </title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/power.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class = "calculator">
+        <form action="">
+            <fieldset>
+                <h1>Power Bill Calculator</h1>
+                <p>The utility bill calculator is a resource that allows a consumer to check the accuracy of a person's eletricity bill.
+                </p>
+                <p><label>Enter the monthly usage in kilowatt hours (kWh)</label>
+                    <input type="text" id="kwh">
+                </p>
+                <p><label>Enter the number of days for your current billing period</label>
+                    <input type="text" id="days">
+                </p>
+                <p><label>Is your residence INSIDE the city limits of your city?</label>
+                    <input type="checkbox" id="city">
+                </p>
+                <p><label>Is this a summer month (June-September)?</label>
+                    <input type="checkbox" name="months" id="summer">
+                </p>
+                <p>
+                    <label>Enter sales tax (%)</label>
+                    <input type="text" id="tax">
+                </p>
+                <p>
+                    <input type="button" value="SUBMIT" onclick= "calculate();">
+                    <input type="reset" value="RESET">
+                </p>
+
+            </fieldset>
+        </form>
+    </div>
+    <script>
+        function calculate() {
+            var kwh = parseFloat(document.getElementById("kwh").value);
+            var base = parseFloat(document.getElementById("days").value);
+            var tax = parseFloat(document.getElementById("tax").value);
+            var summer = document.querySelector("#summer").checked;
+            var city = document.querySelector("#city").checked;
+            var charge = base*.4603;
+            var tier1 = 0;
+            var tier2 = 0;
+            var tier3 = 0;
+            var fuel = 0;
+            var franchise = 0;
+            if (summer) {
+                if (kwh<=650) {
+                    tier1 = kwh*0.066678;
+                }
+                else if (kwh<=1000) {
+                    tier1 = 650*0.066678;
+                    tier2 = (kwh-650)*0.11078;
+                }
+                else {
+                    tier1 = 650*0.066678;
+                    tier2 = 350*0.110748;
+                    tier3 = (kwh-1000)*0.114625;
+                }
+                fuel = kwh*0.045876;
+            }
+            else {
+                if (kwh<=650) {
+                    tier1 = kwh*0.062404;
+                }
+                else if (kwh<=1000) {
+                    tier1 = 650*0.062404;
+                    tier2 = (kwh-650)*0.062404;
+                }
+                else {
+                    tier1 = 650*0.062404;
+                    tier2 = 350*0.062404;
+                    tier3 = (kwh-1000)*0.062404;
+                }
+                fuel = kwh*0.042859;
+            }
+            
+            var brevenue = tier1+tier2+tier3+charge;
+            var demand = brevenue*0.015989;
+            var nuclear = brevenue*0.041562;
+            var environ = brevenue*0.162813;
+            var totrevenue = brevenue+fuel+demand+nuclear+environ;
+            if (city) {
+                franchise = totrevenue*0.030674;
+            }
+            else {
+                franchise = totrevenue*0.011839;
+            }
+            var totalnotax = totrevenue+franchise;
+            var totalwtax = (totrevenue+franchise)*(1+(tax/100));
+            document.getElementById("baseCharge").textContent = charge.toFixed(2);
+            document.getElementById("tier1").textContent = tier1.toFixed(2);
+            document.getElementById("tier2").textContent = tier2.toFixed(2);
+            document.getElementById("tier3").textContent = tier3.toFixed(2);
+            document.getElementById("brevenue").textContent = brevenue.toFixed(2);
+            document.getElementById("demand").textContent = demand.toFixed(2);
+            document.getElementById("nuclear").textContent = nuclear.toFixed(2);
+            document.getElementById("environ").textContent = environ.toFixed(2);
+            document.getElementById("fuel").textContent = fuel.toFixed(2);
+            document.getElementById("totrevenue").textContent = totrevenue.toFixed(2);
+            document.getElementById("franchise").textContent = franchise.toFixed(2);
+            document.getElementById("totalnotax").textContent = totalnotax.toFixed(2);
+            document.getElementById("totalwtax").textContent = totalwtax.toFixed(2);
+        }
+        
+    </script>
+    <div class = "details">
+        <fieldset>
+            <h1>Details of Power Bill</h1>
+            <table>
+                <tr>
+                    <td>ITEMS</td>
+                    <td>FEES</td>
+                </tr>
+                <tr>
+                    <td>Base Charge:</td>
+                    <td id="baseCharge"></td>
+                </tr>
+                <tr>
+                    <td>Tier 1 Component (kWh):</td>
+                    <td id="tier1"></td>
+                </tr>
+                <tr>
+                    <td>Tier 2 Component (kWh):</td>
+                    <td id="tier2"></td>
+                </tr>
+                <tr>
+                    <td>Tier 3 Component (kWh):</td>
+                    <td id="tier3"></td>
+                </tr>
+                <tr>
+                    <td><b>Base Revenue -- Base Bill Subtotal:</b></td>
+                    <td id="brevenue"></td>
+                </tr>
+                <tr>
+                    <td>Fuel Cost Rider:</td>
+                    <td id="fuel"></td>
+                </tr>
+                <tr>
+                    <td>Demand Side Management Residential Rider:</td>
+                    <td id="demand"></td>
+                </tr>
+                <tr>
+                    <td>Nuclear Construction Cost Recovery Rider:</td>
+                    <td id="nuclear"></td>
+                </tr>
+                <tr>
+                    <td>Environmental Compliance Cost Recovery Rider:</td>
+                    <td id="environ"></td>
+                </tr>
+                <tr>
+                    <td><b>Total Revenue -- Current Service Subtotal:</b></td>
+                    <td id="totrevenue"></td>
+                </tr>
+                <tr>
+                    <td>Franchise Fee</td>
+                    <td id="franchise"></td>
+                </tr>
+                <tr>
+                    <td><b>Total (excluding tax):</b></td>
+                    <td id="totalnotax"></td>
+                </tr>
+                <tr>
+                    <td><b>TOTAL (w/ tax):</b></td>
+                    <td id="totalwtax"></td>
+                </tr>
+            </table>
+        </fieldset>
+
+    </div>
+    
+</body>
+
+
+</html>

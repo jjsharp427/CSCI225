@@ -1,0 +1,26 @@
+:root {
+    --page-position: 80%;
+    --page-width: 50vw;
+}
+body {
+    font-size: 20px;
+    background-color: rgb(122, 118, 118);
+
+}
+div.calculator {
+    position: fixed;
+    width: var(--page-width);
+    top: 0px;
+    border: 1px solid black;
+    margin-top: -25px;
+}
+div.details {
+    position: fixed;
+    width: var(--page-width);
+    top: 0px;
+    right: 0px;
+    margin-top: -25px;
+}
+div table {
+    border: 1px solid black;
+}
