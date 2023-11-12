@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator</title>
+    <script>
+        function calculateLoan() {
+            // Get user input from the form
+            const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+            const loanTermMonths = parseInt(document.getElementById('loanTermMonths').value);
+            const annualInterestRate = parseFloat(document.getElementById('annualInterestRate').value);
+
+            // Validate input
+            if (isNaN(loanAmount) || isNaN(loanTermMonths) || isNaN(annualInterestRate)) {
+                alert("Please enter valid numerical values.");
+                return;
+            }
+
+            // Call the loan calculation function
+            const result = calculateLoanAmortization(loanAmount, loanTermMonths, annualInterestRate);
+            console.log(result.monthlyPayment,result.totalRepayment);
+            // Display results on the webpage
+            document.getElementById('monthlyPayment').innerText = "Monthly Payment: $" + result.monthlyPayment;
+            document.getElementById('totalRepayment').innerText = "Total Repayment: $" + result.totalRepayment;
+
+            // Display amortization schedule on the webpage
+            const amortizationTable = document.getElementById('amortizationTable');
+            amortizationTable.innerHTML = "<tr><th>Month</th><th>Balance</th><th>Principal Paid</th><th>Interest Paid</th><th>Total Payment</th></tr>";
+            result.amortizationSchedule.forEach(entry => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${entry.month}</td><td>${entry.balance}</td><td>${entry.principalPaid}</td><td>${entry.interestPaid}</td><td>${entry.totalPayment}</td>`;
+                amortizationTable.appendChild(row);
+            });
+        }
+
+        function calculateLoanAmortization(loanAmount, loanTermMonths, annualInterestRate) {
+            // Convert annual interest rate to monthly and decimal form
+            const monthlyInterestRate = (annualInterestRate / 100) / 12;
+
+            // Calculate monthly payment using the formula
+            const monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -loanTermMonths));
+
+            let balance = loanAmount;
+            let totalPayment = 0;
+            let amortizationSchedule = [];
+
+            for (let month = 1; month <= loanTermMonths; month++) {
+                // Calculate interest paid for the month
+                const interestPaid = balance * monthlyInterestRate;
+
+                // Calculate principal paid for the month
+                const principalPaid = monthlyPayment - interestPaid;
+
+                // Update the remaining balance
+                balance -= principalPaid;
+
+                // Accumulate total payments
+                totalPayment += monthlyPayment;
+
+                // Store payment details for the current month
+                amortizationSchedule.push({
+                    month,
+                    balance: balance.toFixed(2),
+                    principalPaid: principalPaid.toFixed(2),
+                    interestPaid: interestPaid.toFixed(2),
+                    totalPayment: totalPayment.toFixed(2)
+                });
+            }
+
+            return {
+                monthlyPayment: monthlyPayment.toFixed(2),
+                totalRepayment: totalPayment.toFixed(2),
+                amortizationSchedule
+            };
+        }
+    </script>
+</head>
+<body>
+    <h1>Loan Calculator</h1>
+    <form>
+        <label for="loanAmount">Loan Amount ($):</label>
+        <input type="text" id="loanAmount" required>
+
+        <label for="loanTermMonths">Loan Term (Months):</label>
+        <input type="text" id="loanTermMonths" required>
+
+        <label for="annualInterestRate">Annual Interest Rate (%):</label>
+        <input type="text" id="annualInterestRate" required>
+
+        <button type="button" onclick="calculateLoan()">Calculate</button>
+    </form>
+
+    <div id="results">
+        <p id="monthlyPayment"></p>
+        <p id="totalRepayment"></p>
+    </div>
+
+    <table id="amortizationTable"></table>
+</body>
+</html>
