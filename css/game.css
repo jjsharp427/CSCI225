@@ -1,0 +1,43 @@
+/* Style file for memory game final project 
+Made by Josh Sharp and Ashlyn White */
+
+/* variables to use throughout file */
+:root {
+    --page-color: hsla(180, 76%, 41%, 0.879);
+    --text-color: rgb(250,0,20);
+}
+
+
+body {
+    /* background-color: var(--page-color); */
+    /* background-image: url(../img/objects.jpg); */
+    background-size: cover;
+    background-color: black;
+
+}
+
+div.menu {
+    font-family: 'Holtwood One Sc',cursive;
+    position: absolute;
+    left: 40vw;
+    top: 40vh;
+    padding: 2px;
+    background-color: black;
+    color: var(--text-color);
+}
+
+div.gameboard {
+    position: fixed;
+    padding: 10px;
+}
+div.gameboard button {
+    display: inline-block;
+    width: 80px;
+    height: 140px;
+}
+img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
