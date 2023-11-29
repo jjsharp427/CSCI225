@@ -12,13 +12,6 @@ function getInstructions() {
 // *** GAMEPLAY ***
 // shuffle arrays method
 function shuffle(arr) {
-//     var j, x, i;
-//   for (i = arr.length - 1; i > 0; i--) {
-//     j = Math.floor (Math.random () * (i + 1));
-//     x = arr[i];
-//     arr [i] = arr[j];
-//     arr[j] = x;
-//   }
     //Fisher-Yates shuffle
     let currentIndex = arr.length,  randomIndex;
 
@@ -32,8 +25,7 @@ function shuffle(arr) {
       // And swap it with the current element.
       [arr[currentIndex], arr[randomIndex]] = [
         arr[randomIndex], arr[currentIndex]];
-    }
-  
+    } 
     return arr;
 }
 // declaring pics for matching
@@ -42,7 +34,7 @@ var pics = ["computer.jpg","alexa.jpg","jbl.jpg","phone.jpg","ps4.jpg","jbl.jpg"
 shuffle(pics);
 // output pics into table
 for (var pic in pics) {
-    document.getElementById("pic"+pic).setAttribute("src","img/"+pics[pic]);
+    document.getElementById(pic).setAttribute("src","img/"+pics[pic]);
 }
 // make each button the question mark to hide pics
 $("img").each(function(){
@@ -50,11 +42,32 @@ $("img").each(function(){
     $(this).attr("src","img/"+question);
 });
 
+// when a question box is clicked, the image appears
+// array will hold the two images clicked; if a match they will stay face up
+// if not a match, they will return to question
+let arr = [];
 $("img").click(function() {
     var id = $(this).attr('id');
-    id = id.substring(id.length-2);
     $(this).attr("src","img/"+pics[id]);
+    arr.push(id);
+    if (arr.length==2) {
+        console.log(isMatch());
+        arr = [];
+    }    
 });
+// method to figure if images are a match
+function isMatch() {
+    if (pics[arr[0]]==pics[arr[1]]) {
+        return true;
+    }
+    else { // returns false for not a match, resets pics to question mark
+        document.getElementById(arr[0]).setAttribute("src","img/questionmark.jpg");
+        document.getElementById(arr[1]).setAttribute("src","img/questionmark.jpg");
+        return false;
+    }
+}
+
+// set timeout for 3 seconds so player can see 2nd image pop up
 
 
 
