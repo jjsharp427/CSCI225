@@ -25,5 +25,6 @@ function stopwatch() {
         clearTimeout(timeout);
         time = secondStr;
         console.log(time);
+        $(".open-button").addClass("animated");
     }      
 }

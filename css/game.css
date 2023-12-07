@@ -110,6 +110,7 @@ p {
 }
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
+  display: none;
   background-color: #555;
   color: white;
   padding: 16px 20px;
@@ -121,33 +122,18 @@ p {
   right: 28px;
   width: 280px;
   z-index: 3;
-  animation: moving;
-  animation-duration: 3s;
+}
+.open-button.animated {
+  animation: moving 3s linear forwards;
+  display: block;
 }
 
 @keyframes moving {
   from {
-    transform: translate(0, 0px);
+    transform: translate(0px, 0px);
   }
-
-  20% {
-    transform: translate(-160px, -160px);
-  }
-
-  40% {
-    transform: translate(-250px, -250px);
-  }
-
-  60% {
-    transform: translate(-360px, -360px);
-  }
-
-  80% {
-    transform: translate(-430px,-430px);
-  }
-
   100% {
-    transform: translate(-50%, -50%);
+    transform: translate(-600px,-300px);
   }
 }
 
@@ -155,8 +141,8 @@ p {
 .form-popup {
   display: none;
   position: fixed;
-  bottom: 0;
-  right: 15px;
+  left: 40%;
+  top: 40%;
   border: 3px solid #f1f1f1;
   z-index: 9;
   font-family: 'Press Start 2P', cursive;
@@ -170,8 +156,8 @@ p {
 }
 
 /* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
+.form-container input[type=text] {
+  width: 90%;
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
@@ -179,14 +165,14 @@ p {
 }
 
 /* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+.form-container input[type=text]:focus {
   background-color: #ddd;
   outline: none;
 }
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #04AA6D;
+  background-color: #187050;
   color: white;
   padding: 16px 20px;
   border: none;

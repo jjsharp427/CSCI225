@@ -4,6 +4,8 @@ function openForm() {
 
 function closeForm() {
     document.getElementById("myForm").style.display = "none";
+    $(".open-button").show();
+    window.location.href = "leaderboard.html";
 }
 
 function saveName() {

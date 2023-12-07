@@ -57,11 +57,10 @@
     <!-- The form -->
     <div class="form-popup" id="myForm">
         <form class="form-container">
-            <h1>Login</h1>
-
+            <h1>Enter a name to be known by</h1>
             <label for="name"><b>Username</b></label>
             <input type="text" placeholder="Enter Name" id="name" required>
-            <input type="button" value="Enter" onclick="closeForm();saveName()">
+            <button onclick="closeForm();saveName()">Submit</button>
         </form>
     </div>
     <script>
@@ -70,6 +69,7 @@
 </body>
 <script src="js/game.js"></script>
 <script src="js/stopwatch.js"></script>
+<script src="js/database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
 <script>

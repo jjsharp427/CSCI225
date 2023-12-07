@@ -46,7 +46,7 @@ $("img").each(function(){
 // method to figure if images are a match
 let matches = 0;
 function isMatch() {
-    if (pics[arr[0]]==pics[arr[1]]) {
+    if (pics[arr[0]]===pics[arr[1]]) {
         setTimeout(removeImgs,200);
         function removeImgs() {
             try {
