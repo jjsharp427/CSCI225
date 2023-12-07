@@ -1,40 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>MEMORY GAME</title>
-        <link rel="stylesheet" href="css/game.css">
-        <!-- Jquery library   ---->
-        <script src="https://code.jquery.com/jquery-3.5.1.js"
+
+<head>
+    <title>MEMORY GAME</title>
+    <link rel="stylesheet" href="css/game.css">
+    <!-- Jquery library   ---->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    </head>
-    <body>
-        <div class="gameboard"></div>
-        <table id="board">
-            <tr>
-                <td><button><img src="" id="0"></button></td>
-                <td><button><img src="" id="1"></button></td>
-                <td><button><img src="" id="2"></button></td>
-                <td><button><img src="" id="3"></button></td>
-            </tr>
-            <tr>
-                <td><button><img src="" id="4"></button></td>
-                <td><button><img src="" id="5"></button></td>
-                <td><button><img src="" id="6"></button></td>
-                <td><button><img src="" id="7"></button></td>
-            </tr>
-            <tr>
-                <td><button><img src="" id="8"></button></td>
-                <td><button><img src="" id="9"></button></td>
-                <td><button><img src="" id="10"></button></td>
-                <td><button><img src="" id="11"></button></td>
-            </tr>
-            <tr>
-                <td><button><img src="" id="12"></button></td>
-                <td><button><img src="" id="13"></button></td>
-                <td><button><img src="" id="14"></button></td>
-                <td><button><img src="" id="15"></button></td>
-            </tr>
-        </table>
-    </body>
-    <script src="js/game.js"></script>
+</head>
+<header>
+    <h1>THE MATCHING GAME</h1>
+    <nav>
+        <a href="homepage.html">Homepage</a>
+        <a href="rules.html">Rules</a>
+        <a href="leaderboard.html">Leaderboard</a>
+    </nav>
+</header>
+
+<body>
+    <div class="sidebar"></div>
+    <div class="sidebar2"></div>
+    <div class="gameboard"></div>
+    <table id="board">
+        <tr>
+            <td><img src="" id="0"></td>
+            <td><img src="" id="1"></td>
+            <td><img src="" id="2"></td>
+            <td><img src="" id="3"></td>
+        </tr>
+        <tr>
+            <td><img src="" id="4"></td>
+            <td><img src="" id="5"></td>
+            <td><img src="" id="6"></td>
+            <td><img src="" id="7"></td>
+        </tr>
+        <tr>
+            <td><img src="" id="8"></td>
+            <td><img src="" id="9"></td>
+            <td><img src="" id="10"></td>
+            <td><img src="" id="11"></td>
+        </tr>
+        <tr>
+            <td><img src="" id="12"></td>
+            <td><img src="" id="13"></td>
+            <td><img src="" id="14"></td>
+            <td><img src="" id="15"></td>
+        </tr>
+    </table>
+    <div id="stopwatch">
+        <span class="number" id="sec">00</span>
+        <span class="seconds">sec</span>
+    </div>
+    <!-- A button to open the popup form -->
+    <button class="open-button" onclick="openForm()">Open Form</button>
+
+    <!-- The form -->
+    <div class="form-popup" id="myForm">
+        <form class="form-container">
+            <h1>Login</h1>
+
+            <label for="name"><b>Username</b></label>
+            <input type="text" placeholder="Enter Name" id="name" required>
+            <input type="button" value="Enter" onclick="closeForm();saveName()">
+        </form>
+    </div>
+    <script>
+        var playerName = document.getElementById("name").value;
+    </script>
+</body>
+<script src="js/game.js"></script>
+<script src="js/stopwatch.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyAsYoFfwUbzeJgKNGnp9m0uNQQukx7gecE",
+        authDomain: "database1-9a23b.firebaseapp.com",
+        projectId: "database1-9a23b",
+        storageBucket: "database1-9a23b.appspot.com",
+        messagingSenderId: "86486126439",
+        appId: "1:86486126439:web:1012829861c6359505a9c2",
+        measurementId: "G-8D43VGFTBB"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    // add scores to the database
+    console.log(playerName);
+    
+    db.collection("playerScores").add({
+        name: playerName,
+        time: time
+    });
+    // Read data from the database
+</script>
+<footer>
+    <p>Created by Josh Sharp and Ashlyn White</p>
+</footer>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+
 </html>

@@ -42,6 +42,37 @@ $("img").each(function(){
     $(this).attr("src","img/"+question);
 });
 
+
+// method to figure if images are a match
+let matches = 0;
+function isMatch() {
+    if (pics[arr[0]]==pics[arr[1]]) {
+        setTimeout(removeImgs,200);
+        function removeImgs() {
+            try {
+                matches++;
+                document.getElementById(arr[0]).remove();
+                document.getElementById(arr[1]).remove();
+                arr = []               
+            } catch (error) {
+                console.log(error);
+            }
+        }  
+    }
+    else { // resets pics to question mark
+        // set timeout for portion of time so player can see 2nd image pop up (IF NOT A MATCH)
+        setTimeout(changeImgs,200);
+        function changeImgs() {
+            try {
+                document.getElementById(arr[0]).setAttribute("src","img/questionmark.jpg");
+                document.getElementById(arr[1]).setAttribute("src","img/questionmark.jpg");
+                arr = []     
+            } catch (error) {
+                console.log(error);
+            }
+        }    
+    }
+}
 // when a question box is clicked, the image appears
 // array will hold the two images clicked; if a match they will stay face up
 // if not a match, they will return to question
@@ -51,25 +82,8 @@ $("img").click(function() {
     $(this).attr("src","img/"+pics[id]);
     arr.push(id);
     if (arr.length==2) {
-        console.log(isMatch());
-        arr = [];
+        isMatch();
     }    
 });
-// method to figure if images are a match
-function isMatch() {
-    if (pics[arr[0]]==pics[arr[1]]) {
-        return true;
-    }
-    else { // returns false for not a match, resets pics to question mark
-        document.getElementById(arr[0]).setAttribute("src","img/questionmark.jpg");
-        document.getElementById(arr[1]).setAttribute("src","img/questionmark.jpg");
-        return false;
-    }
-}
-
-// set timeout for 3 seconds so player can see 2nd image pop up
-
-
-
 
 
