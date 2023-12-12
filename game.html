@@ -59,8 +59,8 @@
         <form class="form-container">
             <h1>Enter a name to be known by</h1>
             <label for="name"><b>Username</b></label>
-            <input type="text" placeholder="Enter Name" id="name" required>
-            <button onclick="saveName();closeForm()">Submit</button>
+            <input type="text" placeholder="Enter Name" id="nombre" required>
+            <button id="save">Submit</button>
         </form>
     </div>
 </body>
@@ -82,20 +82,26 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
-    // add scores to the database
-    // if (gameOver)
-    // db.collection("playerScores").add({
-    //     name: playerName,
-    //     time: time
-    // });
-    // // Read data from the database
-    // if (playerName != null) {
-    //     db.collection("playerScores").orderBy("time").limit(5).get().then((querySnapshot) => {
-    //         querySnapshot.forEach((doc) => {
-    //             console.log(`${doc.id} => ${doc.data().item}`);
-    //         });
-    //     });
-    // }
+    // add name and scores to the database
+    var usernameInput = "";
+    $("#save").click(function() {
+        console.log("Saving to leaderboard");
+        usernameInput = document.getElementById("nombre").value;
+        console.log(usernameInput);
+        console.log(timeTaken);0
+        db.collection('playerScores').add({
+            username: usernameInput,
+            time: timeTaken,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        })
+            .then(docRef => {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(error => {
+                console.error("Error adding document: ", error);
+            });
+            window.location.href = "leaderboard.html";
+    });
 </script>
 <footer>
     <p>Created by Josh Sharp and Ashlyn White</p>
