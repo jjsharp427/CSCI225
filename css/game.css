@@ -110,7 +110,7 @@ p {
 }
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
-  display: none;
+  display: block;
   background-color: #555;
   color: white;
   padding: 16px 20px;
@@ -118,9 +118,9 @@ p {
   cursor: pointer;
   opacity: 0.8;
   position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
+  bottom: 1.3vh;
+  right: .7vw;
+  width: 18vw;
   z-index: 3;
 }
 .open-button.animated {
@@ -133,7 +133,7 @@ p {
     transform: translate(0px, 0px);
   }
   100% {
-    transform: translate(-600px,-300px);
+    transform: translate(-40vw,-40vh);
   }
 }
 
@@ -141,8 +141,8 @@ p {
 .form-popup {
   display: none;
   position: fixed;
-  left: 40%;
-  top: 40%;
+  left: 45%;
+  bottom: 45%;
   border: 3px solid #f1f1f1;
   z-index: 9;
   font-family: 'Press Start 2P', cursive;

@@ -2,6 +2,7 @@ let second = 0;
 let count = -1;
 let temp = 0;
 let time = 0;
+var gameOver = false;
 
 window.onload = stopwatch;
 
@@ -26,5 +27,7 @@ function stopwatch() {
         time = secondStr;
         console.log(time);
         $(".open-button").addClass("animated");
+        gameOver = true;
+
     }      
 }

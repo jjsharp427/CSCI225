@@ -60,12 +60,9 @@
             <h1>Enter a name to be known by</h1>
             <label for="name"><b>Username</b></label>
             <input type="text" placeholder="Enter Name" id="name" required>
-            <button onclick="closeForm();saveName()">Submit</button>
+            <button onclick="saveName();closeForm()">Submit</button>
         </form>
     </div>
-    <script>
-        var playerName = document.getElementById("name").value;
-    </script>
 </body>
 <script src="js/game.js"></script>
 <script src="js/stopwatch.js"></script>
@@ -86,13 +83,19 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
     // add scores to the database
-    console.log(playerName);
-    
-    db.collection("playerScores").add({
-        name: playerName,
-        time: time
-    });
-    // Read data from the database
+    // if (gameOver)
+    // db.collection("playerScores").add({
+    //     name: playerName,
+    //     time: time
+    // });
+    // // Read data from the database
+    // if (playerName != null) {
+    //     db.collection("playerScores").orderBy("time").limit(5).get().then((querySnapshot) => {
+    //         querySnapshot.forEach((doc) => {
+    //             console.log(`${doc.id} => ${doc.data().item}`);
+    //         });
+    //     });
+    // }
 </script>
 <footer>
     <p>Created by Josh Sharp and Ashlyn White</p>
