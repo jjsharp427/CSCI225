@@ -117,9 +117,10 @@
     var table = document.getElementById("leaderboard");
     var place = 1;
     db.collection("playerScores")
-        .orderBy("time").limit(5)
+        .orderBy('time')
+        .limit(10)
         .get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
+            querySnapshot.forEach(doc => {
                 console.log(`${doc.id} => ${doc.data().time}`);
                 var row = table.insertRow();
                 var cell = row.insertCell();
@@ -131,10 +132,6 @@
                 place++;
             });
         });
-
-
-
-
 </script>
 
 </html>

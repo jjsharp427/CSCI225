@@ -60,7 +60,7 @@
             <h1>Enter a name to be known by</h1>
             <label for="name"><b>Username</b></label>
             <input type="text" placeholder="Enter Name" id="nombre" required>
-            <button id="save">Submit</button>
+            <button type="button" id="save">Submit</button>
         </form>
     </div>
 </body>
@@ -88,19 +88,18 @@
         console.log("Saving to leaderboard");
         usernameInput = document.getElementById("nombre").value;
         console.log(usernameInput);
-        console.log(timeTaken);0
+        console.log(timeTaken);
         db.collection('playerScores').add({
             username: usernameInput,
             time: timeTaken,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        })
-            .then(docRef => {
-                console.log("Document written with ID: ", docRef.id);
+        }).then(docRef => {
+                console.log("Document written with ID and saved: ", docRef.id);
+                window.location.href = "leaderboard.html";
             })
             .catch(error => {
                 console.error("Error adding document: ", error);
             });
-            window.location.href = "leaderboard.html";
     });
 </script>
 <footer>

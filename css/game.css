@@ -79,12 +79,13 @@ div.sidebar2 {
 
 #stopwatch {
     position: fixed;
-    background-color: black;
+    background-color: red;
     left: 42%;
     bottom: 8.5%;
     font-size: 3em;
     font-family: 'Press Start 2P', cursive;
-    color: rgb(206, 45, 45);
+    border: 4px solid black;
+    color: wheat
 }
 img {
     /* width: 115px;
@@ -103,6 +104,7 @@ footer {
     bottom: 0%;
     position: fixed;
     width: 100%;
+    border: 4px solid black;
     height: 6vh;
 }
 p {
@@ -110,7 +112,7 @@ p {
 }
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
-  display: block;
+  display: none;
   background-color: #555;
   color: white;
   padding: 16px 20px;
@@ -141,8 +143,8 @@ p {
 .form-popup {
   display: none;
   position: fixed;
-  left: 45%;
-  bottom: 45%;
+  left: 39.5%;
+  bottom: 37%;
   border: 3px solid #f1f1f1;
   z-index: 9;
   font-family: 'Press Start 2P', cursive;
