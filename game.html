@@ -66,7 +66,6 @@
 </body>
 <script src="js/game.js"></script>
 <script src="js/stopwatch.js"></script>
-<script src="js/database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
 <script>
@@ -82,9 +81,13 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
+    // open username form
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
     // add name and scores to the database
     var usernameInput = "";
-    $("#save").click(function() {
+    $("#save").click(function () {
         console.log("Saving to leaderboard");
         usernameInput = document.getElementById("nombre").value;
         console.log(usernameInput);
@@ -94,9 +97,9 @@
             time: timeTaken,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         }).then(docRef => {
-                console.log("Document written with ID and saved: ", docRef.id);
-                window.location.href = "leaderboard.html";
-            })
+            console.log("Document written with ID and saved: ", docRef.id);
+            window.location.href = "leaderboard.html";
+        })
             .catch(error => {
                 console.error("Error adding document: ", error);
             });
