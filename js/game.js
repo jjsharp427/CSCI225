@@ -14,7 +14,6 @@ function getInstructions() {
 function shuffle(arr) {
     //Fisher-Yates shuffle
     let currentIndex = arr.length, randomIndex;
-
     // While there remain elements to shuffle.
     while (currentIndex > 0) {
 
@@ -41,12 +40,9 @@ $("img").each(function () {
     var question = "questionmark.jpg";
     $(this).attr("src", "img/" + question);
 });
-
-
 // method to figure if images are a match
 let matches = 0;
 function isMatch() {
-
     if (pics[arr[0]] === pics[arr[1]]) {
         setTimeout(removeImgs, 350);
         function removeImgs() {
@@ -60,7 +56,6 @@ function isMatch() {
             }
         }
     }
-
     else { // resets pics to question mark
         // set timeout for portion of time so player can see 2nd image pop up (IF NOT A MATCH)
         setTimeout(changeImgs, 350);
@@ -85,7 +80,7 @@ $("img").click(function () {
     $(this).attr("src", "img/" + pics[id]);
     if (arr.length == 1) {
         if (arr[0] == id) {
-            // change he image back to
+            // change the image back to
             document.getElementById(arr[0]).setAttribute("src", "img/questionmark.jpg");
             arr.pop();
         }else{
@@ -94,7 +89,6 @@ $("img").click(function () {
     } else {
         arr.push(id);
     }
-
     if (arr.length == 2) {
         isMatch();
     }
